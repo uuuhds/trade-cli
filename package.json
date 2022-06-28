@@ -1,0 +1,80 @@
+{
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "bin": {
+    "trade": "./src/bin/lib.js"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why",
+    "lint": "cross-env IS_DIFF=true eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "format": "prettier --write \"src/**/*.{js,ts,tsx,scss,css}\" \"test/**/*.{js,ts,tsx,scss,css}\"",
+    "eslint:fix": "cross-env IS_DIFF=true eslint \"src/**/*.{js,jsx,ts,tsx}\" --no-error-on-unmatched-pattern --fix"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "trade-cli",
+  "author": "uuuhds@outlook.com",
+  "module": "dist/trade-cli.esm.js",
+  "size-limit": [
+    {
+      "path": "dist/trade-cli.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/trade-cli.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "devDependencies": {
+    "@size-limit/preset-small-lib": "^7.0.8",
+    "@types/commander": "^2.12.2",
+    "@typescript-eslint/eslint-plugin": "^5.30.0",
+    "@typescript-eslint/parser": "^5.30.0",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.18.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-diff": "^1.0.15",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.1.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-require-jsdoc-except": "^1.5.0",
+    "husky": "^8.0.1",
+    "prettier": "^2.7.1",
+    "size-limit": "^7.0.8",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.4.0",
+    "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "commander": "^9.3.0",
+    "execa": "^6.1.0",
+    "ezeslint": "^1.0.2",
+    "fs-extra": "^10.1.0",
+    "npmlog": "^6.0.2",
+    "simple-git": "^3.10.0"
+  }
+}
